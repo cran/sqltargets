@@ -9,12 +9,22 @@
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![R-CMD-check](https://github.com/daranzolin/sqltargets/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/daranzolin/sqltargets/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/sqltargets)](https://CRAN.R-project.org/package=sqltargets)
+[![](https://cranlogs.r-pkg.org/badges/sqltargets)](https://cran.r-project.org/package=sqltargets)
+[![R
+Targetopia](https://img.shields.io/badge/R_Targetopia-member-blue?style=flat&labelColor=gray)](https://wlandau.github.io/targetopia/)
+
 <!-- badges: end -->
 
-SQL queries (as separate files) occupy an awkward spot within R
-pipelines. The goal of sqltargets is to offer a shorthand `tar_sql` to
-reference and execute queries within [a targets
-project.](https://github.com/ropensci/targets)
+sqltargets makes it easy to integrate SQL files within your [targets
+workflows.](https://github.com/ropensci/targets) The shorthand
+`tar_sql()` creates two targets: (1) the ‘upstream’ SQL file; and (2)
+the ‘downstream’ result of the query. Dependencies can be specified by
+calling `tar_load()` within SQL comments. Parameters can be specified
+using glue::glue_sql() bracket notation (‘{}’) (or configured using the
+`sqltargets.glue_sql_opening_delimiter` and
+`sqltargets.glue_sql_closing_delimiter` options.
 
 ## Installation
 
@@ -47,7 +57,6 @@ tar_dir({  #
   writeLines(lines, "query.sql")
 # Include the query in a pipeline as follows.
   tar_script({
-    library(tarchetypes)
     library(sqltargets)
     list(
       tar_sql(query, path = "query.sql")
@@ -81,7 +90,7 @@ lines <- c(
 Pass parameters (presumably from another object in your targets project)
 from a named list with ‘glue’ syntax: `{param}`.
 
-query.sql
+`query.sql`
 
 ``` sql
 -- !preview conn=DBI::dbConnect(RSQLite::SQLite())
@@ -94,14 +103,17 @@ where age > {age_threshold}
 ``` r
 tar_script({
   library(targets)
-  library(tarchetypes)
   library(sqltargets)
   list(
     tar_target(query_params, list(age_threshold = 30)),
-    tar_sql(query, path = "query.sql", query_params = query_params)
+    tar_sql(report, path = "query.sql", query_params = query_params)
     )
   }, ask = FALSE)
+
+tar_visnetwork()
 ```
+
+![](inst/tar_visnetwork.png)
 
 ## Code of Conduct
 
