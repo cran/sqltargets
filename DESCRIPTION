@@ -1,7 +1,7 @@
 Package: sqltargets
 Type: Package
 Title: 'Targets' Extension for 'SQL' Queries
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
       person("David", "Ranzolin", email = "daranzolin@gmail.com", role=c("aut", "cre", "cph"))
       )
@@ -11,15 +11,15 @@ Description: Provides an extension for 'SQL' queries as separate file
     the query file and the query result.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: cli, DBI, fs, glue, purrr, readr, rlang, stringr, tarchetypes,
-        targets, withr
+Imports: cli, DBI, fs, glue, jinjar, purrr, readr, rlang, stringr,
+        tarchetypes, targets, withr
 URL: https://github.com/daranzolin/sqltargets
 BugReports: https://github.com/daranzolin/sqltargets/issues
 RoxygenNote: 7.2.1
 Suggests: testthat (>= 3.0.0), RSQLite (>= 2.2.0)
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2024-06-20 19:29:25 UTC; dranzolin
+Packaged: 2024-07-31 02:08:50 UTC; dranzolin
 Author: David Ranzolin [aut, cre, cph]
 Repository: CRAN
-Date/Publication: 2024-06-20 19:40:02 UTC
+Date/Publication: 2024-07-31 02:30:02 UTC

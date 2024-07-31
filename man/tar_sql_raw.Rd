@@ -7,7 +7,7 @@
 tar_sql_raw(
   name,
   path = ".",
-  query_params = query_params,
+  params = params,
   format = format,
   error = targets::tar_option_get("error"),
   memory = targets::tar_option_get("memory"),
@@ -17,7 +17,7 @@ tar_sql_raw(
   resources = targets::tar_option_get("resources"),
   retrieval = targets::tar_option_get("retrieval"),
   cue = targets::tar_option_get("cue"),
-  deps = deps
+  params_nm = NULL
 )
 }
 \arguments{
@@ -40,7 +40,11 @@ to locally recreate the target's initial RNG state.}
 \item{path}{Character of length 1 to the single `*.sql` source file to be executed.
 Defaults to the working directory of the `targets` pipeline.}
 
-\item{query_params}{A named list of parameters for parameterized queries.}
+\item{params}{Code, can be `NULL`.
+`params` evaluates to a named list of parameters
+that are passed to `jinjar::render()`. The list is quoted
+(not evaluated until the target runs)
+so that upstream targets can serve as parameter values.}
 
 \item{format}{Optional storage format for the target's return value.
 With the exception of \code{format = "file"}, each target
@@ -117,9 +121,7 @@ explicitly from another language.
 \item{cue}{An optional object from \code{tar_cue()} to customize the
 rules that decide whether the target is up to date.}
 
-\item{deps}{Optional character vector of the adjacent upstream
-dependencies of the target, including targets and global objects.
-If \code{NULL}, dependencies are resolved automatically as usual.}
+\item{params_nm}{Character of length 1, name of object passed to `params`.}
 }
 \value{
 A data frame
