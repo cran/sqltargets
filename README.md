@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sqltargets
+# sqltargets <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -21,10 +21,9 @@ sqltargets makes it easy to integrate SQL files within your [targets
 workflows.](https://github.com/ropensci/targets) The shorthand
 `tar_sql()` creates two targets: (1) the ‘upstream’ SQL file; and (2)
 the ‘downstream’ result of the query. Dependencies can be specified by
-calling `tar_load()` within SQL comments. Parameters can be specified
-using glue::glue_sql() bracket notation (‘{}’) (or configured using the
-`sqltargets.glue_sql_opening_delimiter` and
-`sqltargets.glue_sql_closing_delimiter` options.
+calling `tar_load()` within SQL comments. The template engine can be
+specified using the `sqltargets.template_engine` option (either ‘glue’
+or ‘jinjar’).
 
 ## Installation
 
@@ -39,6 +38,12 @@ You can install the development version of sqltargets with:
 ``` r
 remotes::install_github("daranzolin/sqltargets)
 ```
+
+## Demo
+
+See the [sqltargets-demo
+repository](https://github.com/daranzolin/sqltargets-demo) for a
+reproducible demonstration.
 
 ## Dependencies
 
@@ -95,8 +100,6 @@ list(
   )
 ```
 
-![](inst/tar_visnetwork.png)
-
 With ‘Jinja’:
 
 `query.sql`
@@ -132,6 +135,8 @@ Note that `loop.is_last` differs from typical Jinja (`loop.last`). Refer
 to [this ‘jinjar’
 vignette](https://davidchall.github.io/jinjar/articles/template-syntax.html)
 for other syntactical differences.
+
+![](inst/tar_glimpse.png)
 
 ## Code of Conduct
 
