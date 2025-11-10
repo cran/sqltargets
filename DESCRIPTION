@@ -1,9 +1,10 @@
 Package: sqltargets
 Type: Package
 Title: 'Targets' Extension for 'SQL' Queries
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: c(
-      person("David", "Ranzolin", email = "daranzolin@gmail.com", role=c("aut", "cre", "cph"))
+      person("David", "Ranzolin", email = "daranzolin@gmail.com", role=c("aut", "cre", "cph")),
+      person("Roy", "Storey", email = "kiwiroy@protonmail.com", role=c("ctb"), comment=c(ORCID="0000-0003-1375-7136"))
       )
 Maintainer: David Ranzolin <daranzolin@gmail.com>
 Description: Provides an extension for 'SQL' queries as separate file 
@@ -19,7 +20,8 @@ RoxygenNote: 7.2.1
 Suggests: testthat (>= 3.0.0), RSQLite (>= 2.2.0)
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2024-10-02 00:03:22 UTC; dranzolin
-Author: David Ranzolin [aut, cre, cph]
+Packaged: 2025-11-10 22:19:16 UTC; DRanzolin
+Author: David Ranzolin [aut, cre, cph],
+  Roy Storey [ctb] (ORCID: <https://orcid.org/0000-0003-1375-7136>)
 Repository: CRAN
-Date/Publication: 2024-10-02 04:10:02 UTC
+Date/Publication: 2025-11-10 22:30:02 UTC
